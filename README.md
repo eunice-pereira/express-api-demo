@@ -51,3 +51,13 @@ http://localhost:5000/api
 Working 😊
 
 ![postman](./images/postman.png)
+
+## Connecting React front-end API requests to Express back-end
+
+Add to React `package.json file`:
+
+```sh
+  "proxy": "http://localhost:5000",
+```
+
+This will 'forward' API requests from fron-end over to back-end.
