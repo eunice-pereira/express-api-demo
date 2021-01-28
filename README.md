@@ -61,3 +61,42 @@ Add to React `package.json file`:
 ```
 
 This will 'forward' API requests from fron-end over to back-end.
+
+## Render initial route in frontend
+
+In `App.jsx`, add `useEffect()` with `axios` to request data from backend.
+
+```sh
+useEffect(() => {
+		axios.get('/api').then((response) => {
+			console.log(response.data);
+			setData(response.data);
+		});
+	}, []);
+```
+
+Add `data` prop to `App()`:
+
+```jsx
+<Switch>
+    <Route exact path="/">
+        <Home data={data} />
+    </Route>
+```
+
+Then, pass prop into Home component:
+
+```jsx
+const Home = (props) => {
+	return (
+		<>
+			<h1>Home Page</h1>
+			<p>{props.data.status}</p>
+		</>
+	);
+};
+```
+
+Run backend in terminal `node index.js` and frontend React `npm start`.
+
+Webpage should render 'hello world' 😌
